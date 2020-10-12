@@ -23,6 +23,8 @@
 
 #include "DynamicHID/DynamicHID.h"
 
+#define USE_CUSTOM_HID
+
 #if ARDUINO < 10606
 #error The Joystick library requires Arduino IDE 1.6.6 or greater. Please update your IDE.
 #endif // ARDUINO < 10606
@@ -43,7 +45,11 @@
 //  Joystick (Gamepad)
 
 #define JOYSTICK_DEFAULT_REPORT_ID         0x03
+#ifndef USE_CUSTOM_HID
 #define JOYSTICK_DEFAULT_BUTTON_COUNT        32
+#else
+#define JOYSTICK_DEFAULT_BUTTON_COUNT        16
+#endif
 #define JOYSTICK_DEFAULT_AXIS_MINIMUM         0
 #define JOYSTICK_DEFAULT_AXIS_MAXIMUM      1023
 #define JOYSTICK_DEFAULT_SIMULATOR_MINIMUM    0
